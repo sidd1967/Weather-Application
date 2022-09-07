@@ -6,7 +6,7 @@ var router = express.Router();
 var { Sensor } = require('../models/sensor');
 
 
-exports.sensorRegistration = async(request, response) => {
+exports.sensorRegistration = (request, response) => {
 
 var sensorDetails = new Sensor ({
     sensorID: request.body.sensorID,

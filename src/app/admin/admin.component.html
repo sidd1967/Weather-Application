@@ -1,0 +1,23 @@
+<div class="container mt-5">
+    <div class="card mx-auto">
+        <h5 class="card-header">All Sensor Details</h5>
+        <div class="card-body">
+          <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>Sensor ID</th>
+                    <th>Sensor Country</th>
+                    <th>Sensor City</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let d of this.sensorData">
+                    <td>{{d.sensorID}}</td>
+                    <td>{{d.sensorCountry}}</td>
+                    <td>{{d.sensorCity}}</td>
+                </tr>
+            </tbody>
+        </table>
+        </div>
+      </div>  
+</div>

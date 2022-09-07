@@ -1,22 +1,21 @@
-<div class="container m-5">
-    <div class="card">
-        <h5 class="card-header">Featured</h5>
-        <div class="card-body">
-          <h5 class="card-title">Sensor Registration</h5>
-          <div class="mb-3">
-            <label for="exampleFormControlInput1" class="form-label">Sensor ID</label>
-            <input [(ngModel)]="sensorID" type="text" class="form-control" id="sensorID" >
-          </div>
-          <div class="mb-3">
-            <label for="exampleFormControlInput1" class="form-label">Country</label>
-            <input [(ngModel)]="country" type="text" class="form-control" id="country" >
-          </div>
-          <div class="mb-3">
-            <label for="exampleFormControlInput1" class="form-label">City</label>
-            <input [(ngModel)]="city" type="text" class="form-control" id="city" >
-          </div>
-          <a (click)="formSubmit()" class="btn btn-primary">Go somewhere</a>
+<div class="container mt-5">
+  <div class="card mx-auto">
+      <h5 class="card-header">Sensor Registration</h5>
+      <div class="card-body">
+        <h5 class="card-title"></h5>
+        <div class="mb-3">
+          <label for="exampleFormControlInput1" class="form-label">Sensor ID</label>
+          <input [(ngModel)]="sensorID" type="text" class="form-control" id="sensorID" required>
         </div>
-    </div>
-    
+        <div class="mb-3">
+          <label for="exampleFormControlInput1" class="form-label">Country</label>
+          <input [(ngModel)]="country" type="text" class="form-control" id="country" required>
+        </div>
+        <div class="mb-3">
+          <label for="exampleFormControlInput1" class="form-label">City</label>
+          <input [(ngModel)]="city" type="text" class="form-control" id="city" required>
+        </div>
+        <a (click)="formSubmit()" class="btn btn-primary">Register Sensor</a>
+      </div>
+  </div>  
 </div>
