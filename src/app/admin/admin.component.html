@@ -1,23 +1,55 @@
 <div class="container mt-5">
-    <div class="card mx-auto">
-        <h5 class="card-header">All Sensor Details</h5>
-        <div class="card-body">
-          <table class="table table-striped">
-            <thead>
-                <tr>
-                    <th>Sensor ID</th>
-                    <th>Sensor Country</th>
-                    <th>Sensor City</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr *ngFor="let d of this.sensorData">
-                    <td>{{d.sensorID}}</td>
-                    <td>{{d.sensorCountry}}</td>
-                    <td>{{d.sensorCity}}</td>
-                </tr>
-            </tbody>
-        </table>
+    <div class="row">
+        <div class="col-4">
+            <div class="card">
+                <h5 class="card-header">List of available sensors</h5>
+                <h6 class="card-subtitle mx-3 my-2 text-muted">Click on the Sensor ID  to drill down into a particular sensor to display that sensor’s metric values.</h6>
+                <div class="card-body">
+                  <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th>Sensor ID</th>
+                            <th>Sensor Country</th>
+                            <th>Sensor City</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let d of this.sensorData">
+                            <td (click)="this.getSensorMetrics(d.sensorID)"><a class="link">{{d.sensorID}}</a></td>
+                            <td>{{d.sensorCountry}}</td>
+                            <td>{{d.sensorCity}}</td>
+                        </tr>
+                    </tbody>
+                </table>
+                </div>
+            </div> 
         </div>
-      </div>  
+        <div class="col">
+            <div class="card">
+                <h5 class="card-header">Sensor Metrics!!!</h5>
+                <h6 class="card-subtitle m-3 text-muted">Sensor {{this.selectedSensor}}</h6>
+                <div class="card-body" *ngIf="this.sensorMetricData.length>0">
+                    <table class="table table-striped">
+                        <thead>
+                            <tr>
+                                <th>Temp</th>
+                                <th>Wind</th>
+                                <th>Humidity</th>
+                                <th>Time</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let d of this.sensorMetricData">
+                                <td>{{d.temperature}}</td>
+                                <td>{{d.windspeed}}</td>
+                                <td>{{d.humidity}}</td>
+                                <td>{{d.time}}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+         </div>
+    </div>
+     
 </div>

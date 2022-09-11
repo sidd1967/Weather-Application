@@ -1,0 +1,45 @@
+<div class="container">
+   <div class="row mt-5">
+       <div class="col">
+        <div class="card">
+            <h5 class="card-header">Get Weather Updates for a Sensor</h5>
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-1">
+                        <label for="exampleFormControlInput1" class="form-label">Sensor ID</label>
+                    </div>
+                    <div class="col-3"><input [(ngModel)]="sensorID" type="text" class="form-control" id="sensorID" required></div>
+                    <div class="col-1"><a (click)="getWeatherUpdate()" class="btn btn-primary">Submit</a></div>
+                </div>
+            </div>
+        </div>
+       </div>
+   </div>
+   <div class="row mt-3">
+       <div class="col">
+           <div class="card">
+                <h5 class="card-header">Latest Data </h5>
+                <div class="card-body">
+                    <table *ngIf="this.metricData.length>0" class="table table-striped">
+                        <thead>
+                            <tr>
+                                <th>Temp</th>
+                                <th>Wind</th>
+                                <th>Humidity</th>
+                                <th>Time</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let d of this.metricData">
+                                <td>{{d.temperature}}</td>
+                                <td>{{d.windspeed}}</td>
+                                <td>{{d.humidity}}</td>
+                                <td>{{d.time}}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+           </div>
+       </div>
+   </div>
+</div>

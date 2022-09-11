@@ -17,6 +17,8 @@ export class RegistrationComponent implements OnInit {
   }
 
   formSubmit() {
+
+    //Function to Register Sensors
     this.registerSensorService.registration(this.sensorID, this.country, this.city).subscribe((res) => {
     alert('Registered');
     });

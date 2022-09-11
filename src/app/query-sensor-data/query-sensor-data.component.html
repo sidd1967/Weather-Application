@@ -1,0 +1,75 @@
+<div class="container mt-5">
+        <div class="card">
+            <h5 class="card-header">Generate your Query</h5>
+            <div class="row">
+                <div class="col-2 m-3">
+                    <h6 class="card-subtitle mb-2 text-muted">Select Sensors</h6>
+                        <div class="form-check" *ngFor="let d of this.sensorList">
+                            <input (change)='checkSensor($event, d.sensorID)' class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+                            <label class="form-check-label" for="flexCheckDefault">
+                              {{d.sensorID}}
+                            </label>
+                        </div>
+                </div>
+                <div class="col-2 m-3">
+                    <h6 class="card-subtitle mb-2 text-muted">Select Metrics</h6>
+                        <div class="form-check" *ngFor="let d of this.metricsList">
+                            <input (change)="checkMetrics($event, d)" class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+                            <label class="form-check-label" for="flexCheckDefault">
+                              {{d}}
+                            </label>
+                        </div>
+                </div>
+                <div class="col-4 m-3">
+                    <h6 class="card-subtitle mb-2 text-muted">Select Date Range</h6>
+                        
+                        <label class="mr-3">Choose a date</label>
+                        <mat-date-range-input [rangePicker]="picker">
+                            <input [(ngModel)]="selectedStartDate" matStartDate placeholder="Start date">
+                            <input [(ngModel)]="selectedEndDate" matEndDate placeholder="End date">
+                        </mat-date-range-input>
+                        <mat-hint>MM/DD/YYYY – MM/DD/YYYY</mat-hint>
+                        <div class="btn btn-primary m-2">
+                            <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                            <mat-date-range-picker #picker></mat-date-range-picker>
+                        </div>
+                </div>
+                <div class="col-2 align-self-center m-3">
+                    <a (click)="this.onSubmit()" class="btn btn-primary">
+                        Submit Query!
+                    </a>
+                </div>
+        </div>
+        </div>
+        <div class="card mt-4">
+            <div class="row">
+                <div class="col">
+                    <div class="card">
+                        <h5 class="card-header">Report</h5>
+                        <div class="card-body" *ngIf="this.finalData.length>0">
+                            <table class="table table-striped">
+                                <thead>
+                                    <tr>
+                                        <th>Sensor ID</th>
+                                        <th *ngIf='this.isPresentTemp'>Temperature °C</th>
+                                        <th *ngIf='this.isPresentWindSpeed'>Wind Speed (mph)</th>
+                                        <th *ngIf='this.isPresentHumidity'>Humidity %</th>
+                                        <th>Date</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr *ngFor="let d of this.finalData">
+                                        <td>{{d.sensorID}}</td>
+                                        <td *ngIf='this.isPresentTemp'>{{d.temperature}}</td>
+                                        <td *ngIf='this.isPresentWindSpeed'>{{d.windspeed}}</td>
+                                        <td *ngIf='this.isPresentHumidity'>{{d.humidity}}</td>
+                                        <td>{{d.time}}</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+</div>

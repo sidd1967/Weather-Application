@@ -1,3 +1,13 @@
-.card {
-    width: 38rem;
+/* .card {
+    width: 28rem;
+} */
+
+.link{
+    cursor: pointer;
+}
+
+.btn-primary {
+    background-color:white;
+    color: black;
+    border: 1px solid #722ff8;
 }

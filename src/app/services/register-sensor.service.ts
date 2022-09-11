@@ -10,15 +10,13 @@ export class RegisterSensorService {
 
   constructor(private http: HttpClient) { }
   registration(sensorID: any, country: any, city: any){
-    console.log(sensorID);
-    console.log(country);
-    console.log(city);
+    
+    //Api Call to register sensors with their meta data
     var sensorData = {
       sensorID: sensorID,
       country: country,
       city: city
     }
     return this.http.post(this.apiURL+'/sensor/register', sensorData);
-
   }
 }
