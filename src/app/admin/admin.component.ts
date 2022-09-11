@@ -11,7 +11,7 @@ export class AdminComponent implements OnInit {
   sensorData: any = [];
   sensorMetricData: any = [];
   selectedSensor: any;
-
+  noDataFlag: boolean =false;
   ngOnInit(): void {
 
     //Getting Sensor Details to load up the Admin Dashboard
@@ -25,9 +25,13 @@ export class AdminComponent implements OnInit {
 
     //Function to get Metrics Data
     let __this = this;
+    __this.noDataFlag = false;
     __this.selectedSensor = e;
     this.adminService.getSensorMetrics(e).then((data: any) => {
       __this.sensorMetricData = data;
+      if(data.length<=0){
+        __this.noDataFlag = true
+      }
     })
   }
 

@@ -1,9 +1,16 @@
 <div class="container mt-5">
-    <div class="card mx-auto" style="width: 38rem;">
-        <div class="card-body">
-          <h5 class="card-title">Welcome to Weather Application Home Page</h5>
-          <p class="card-text">Register </p>
-          <a href="#" class="btn btn-primary">Let's Start!</a>
-        </div>
+  <div class="col-8 offset-2">
+    <div class="card mx-auto">
+      <div class="card-body">
+        <h5 class="card-title">Welcome to Weather Application Home Page</h5>
+        <ul class="list-group my-4">
+          <li class="list-group-item">Registration - <label class="text-muted">Register sensors using ID and metadata.</label></li>
+          <li class="list-group-item">Admin UI - <label class="text-muted">List of available Sensors & Drill down to display each sensor’s metric values. </label></li>
+          <li class="list-group-item">Get Weather Update! - <label class="text-muted">Get latest Weather Data from API.</label></li>
+          <li class="list-group-item">Querying Sensor Data - <label class="text-muted">Create Customizable query to generate a report of Sensor & Metric Data.</label></li>
+        </ul>
+        <a routerLink="/registration" routerLinkActive="active" router class="nav-link" class="btn btn-primary">Let's Start!</a>
       </div>
+    </div>
+  </div>
 </div>

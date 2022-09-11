@@ -19,7 +19,7 @@ export class QuerySensorDataComponent implements OnInit {
   isPresentTemp: boolean = false;
   isPresentHumidity: boolean = false;
   isPresentWindSpeed: boolean = false;
-
+  noDataFlag: boolean = false;
   constructor(public queryService: QueryService) { }
 
   ngOnInit(): void {
@@ -32,6 +32,17 @@ export class QuerySensorDataComponent implements OnInit {
 
   onSubmit(){
   
+    let __this = this;
+    __this.noDataFlag = false;
+    if(this.selectedStartDate == undefined || this.selectedEndDate == undefined){
+      let startDate = new Date();
+      let endDate = new Date();
+      startDate.setDate(startDate.getDate()-7);
+      this.selectedStartDate = startDate;
+      this.selectedEndDate = endDate;
+      console.log(this.selectedStartDate);
+      console.log(this.selectedEndDate); 
+    }
     let startDate = (this.selectedStartDate.toISOString()).split('T',1)[0];
     let endDate = (this.selectedEndDate.toISOString()).split('T',1)[0];
 
@@ -51,9 +62,12 @@ export class QuerySensorDataComponent implements OnInit {
     this.isPresentWindSpeed = this.selectedMetrics.includes('windspeed');
     
     this.queryService.getQueryData(payload).then((data) => {
-      console.log(data);
-      
       this.finalData = data;
+      console.log(data.length);
+      
+      if(data.length<=0){
+        __this.noDataFlag = true;
+      }
     })
   }
 
@@ -67,7 +81,6 @@ export class QuerySensorDataComponent implements OnInit {
       let i = this.selectedSensors.indexOf(value);
       if(i>-1){ this.selectedSensors.splice(i , 1) }
     }
-    console.log(this.selectedSensors);
   }
   
   checkMetrics(event: any, value: any) {
