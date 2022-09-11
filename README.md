@@ -6,7 +6,7 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
 
 ### Download Code
 
-Clone the repository into you local using the link in the GitHub page.
+Clone the repository into your local machine using the link in the GitHub page.
 
 ### Front-End Setup
 
@@ -21,7 +21,7 @@ To run the server run `nodemon index.js`. The api will start listening to reques
 
 ### Database Setup
 
-The database used is MongoDB Atlas and access is currently open to anyone with the connection srv string. The connection is already configured in the backend files of the web application. So no need to worry about that.
+The database used is MongoDB Atlas and network access is currently open to anyone with the connection srv string. The connection is already configured in the backend files of the web application. So no need to worry about that.
 
 ## Build
 
