@@ -23,7 +23,7 @@
                 <div class="col-4 m-3">
                     <h6 class="card-subtitle mb-2 text-muted">Select Date Range</h6>
                         
-                        <label class="mr-3">Choose a date</label>
+                        <label class="mr-3">Choose a date (Last 7 days data is returned if no date is selected)</label>
                         <mat-date-range-input [rangePicker]="picker">
                             <input [(ngModel)]="selectedStartDate" matStartDate placeholder="Start date">
                             <input [(ngModel)]="selectedEndDate" matEndDate placeholder="End date">
