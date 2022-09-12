@@ -22,6 +22,7 @@ To run the server run `nodemon index.js`. The api will start listening to reques
 ### Database Setup
 
 The database used is MongoDB Atlas and network access is currently open to anyone with the connection srv string. The connection is already configured in the backend files of the web application. So no need to worry about that.
+If you want to have a look at the DB, Please use this connection string `mongodb+srv://sid01:WeatherApp123@cluster0.imxvi1u.mongodb.net/?retryWrites=true&w=majority` to view DB in Mongodb Compass , in any way best suitable.
 
 ## Build
 
