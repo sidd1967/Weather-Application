@@ -13,8 +13,13 @@ export class AdminService {
 
     //Api call to get the list of Sensors
     let __this = this;
-    return __this.http.get(this.apiURL+'/sensor/display').toPromise().then(function (a:any) {
+    return __this.http.get(this.apiURL+'/sensor/display')
+    .toPromise()
+    .then(function (a:any) {
       return a.data;
+    })
+    .catch((err) => {
+      console.log(err);
     })
     
   }
@@ -23,8 +28,13 @@ export class AdminService {
 
     //Api call to display metrics data for the selected sensor
     let __this = this;
-    return __this.http.get(this.apiURL+'/sensor/metric-display/'+sensor).toPromise().then(function (a:any) {
+    return __this.http.get(this.apiURL+'/sensor/metric-display/'+sensor)
+    .toPromise()
+    .then(function (a:any) {
       return a.data;
+    })
+    .catch((err) => {
+      console.log(err);
     })
   }
 }

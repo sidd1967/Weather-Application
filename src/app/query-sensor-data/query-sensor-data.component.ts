@@ -28,6 +28,9 @@ export class QuerySensorDataComponent implements OnInit {
     __this.queryService.getSensorList().then((resp) => {
       __this.sensorList = resp;
     })
+    .catch((err) => {
+      console.log(err);
+    })
   }
 
   onSubmit(){
@@ -46,29 +49,37 @@ export class QuerySensorDataComponent implements OnInit {
     let startDate = (this.selectedStartDate.toISOString()).split('T',1)[0];
     let endDate = (this.selectedEndDate.toISOString()).split('T',1)[0];
 
-    //Adding sensorID and Time fields as well to select data from MongoDB
-    this.selectedMetrics.push('sensorID','time');
-    
-    let payload = {
-      selectedSensors: this.selectedSensors,
-      selectedMetrics: this.selectedMetrics,
-      selectedStartDate: startDate,
-      selectedEndDate: endDate
-    }
 
-    //Checking if fields are included in the query to prep for result display table
-    this.isPresentHumidity = this.selectedMetrics.includes('humidity');
-    this.isPresentTemp = this.selectedMetrics.includes('temperature');
-    this.isPresentWindSpeed = this.selectedMetrics.includes('windspeed');
-    
-    this.queryService.getQueryData(payload).then((data) => {
-      this.finalData = data;
-      console.log(data.length);
-      
-      if(data.length<=0){
-        __this.noDataFlag = true;
+    if(this.selectedMetrics.length>0 && this.selectedSensors.length>0){
+      //Adding sensorID and Time fields as well to select data from MongoDB
+      this.selectedMetrics.push('sensorID','time');
+          
+      let payload = {
+        selectedSensors: this.selectedSensors,
+        selectedMetrics: this.selectedMetrics,
+        selectedStartDate: startDate,
+        selectedEndDate: endDate
       }
-    })
+
+      //Checking if fields are included in the query to prep for result display table
+      this.isPresentHumidity = this.selectedMetrics.includes('humidity');
+      this.isPresentTemp = this.selectedMetrics.includes('temperature');
+      this.isPresentWindSpeed = this.selectedMetrics.includes('windspeed');
+
+      this.queryService.getQueryData(payload).then((data) => {
+        this.finalData = data;
+        if(data.length<=0){
+          __this.noDataFlag = true;
+        }
+      })
+      .catch((err) => {
+        console.log(err);
+      })
+    }
+    else {
+      alert('Please Select Sensors and Metrics to Proceed');
+    }
+    
   }
 
   checkSensor(event: any, value: any) {

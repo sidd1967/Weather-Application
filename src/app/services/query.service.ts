@@ -15,6 +15,9 @@ export class QueryService {
     return __this.http.get(this.apiURL+'/sensor/display-list').toPromise().then(function (a:any) {
       return a.data;
     })
+    .catch((err) => {
+      console.log(err);
+    })
   }
 
   getQueryData(payload: any) {
@@ -23,6 +26,9 @@ export class QueryService {
     let __this = this;    
     return __this.http.post(this.apiURL+'/sensor/query-data', payload).toPromise().then(function (a:any) {
       return a.data;
+    })
+    .catch((err) => {
+      console.log(err);
     })
   }
 }

@@ -16,8 +16,12 @@ export class AdminComponent implements OnInit {
 
     //Getting Sensor Details to load up the Admin Dashboard
     let __this = this;
-    this.adminService.getAllSensorDetails().then((data: any) => {
+    this.adminService.getAllSensorDetails()
+    .then((data: any) => {
       __this.sensorData = data;
+    })
+    .catch((err) => {
+      console.log(err);
     })
   }
 
@@ -32,6 +36,9 @@ export class AdminComponent implements OnInit {
       if(data.length<=0){
         __this.noDataFlag = true
       }
+    })
+    .catch((err) => {
+      console.log(err);
     })
   }
 

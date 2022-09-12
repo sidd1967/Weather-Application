@@ -17,10 +17,15 @@ export class RegistrationComponent implements OnInit {
   }
 
   formSubmit() {
-
     //Function to Register Sensors
-    this.registerSensorService.registration(this.sensorID, this.country, this.city).subscribe((res) => {
-    alert('Registered');
-    });
+    if(this.sensorID!="" && this.country!="" && this.city!=""){
+      this.registerSensorService.registration(this.sensorID, this.country, this.city)
+      .subscribe((res) =>  alert('Registered'),
+                 (err) =>  alert(err)
+      )
+    }
+    else {
+      alert('Please Fill in all the Fields to Register')
+    }
   }
 }
